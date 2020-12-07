@@ -100,7 +100,13 @@ describe('Posts', () => {
 
     const wrapper = mount(Posts, {router, store, localVue});
 
-    it('1 == 1', function () {
-        expect(true).toBe(true)
+    it('renders the correct amount of posts', function () {
+        const posts = wrapper.findAll(".post")
+        expect(posts.length).toEqual(testData.length)
     });
+
+    it('shows date in correct format', function () {
+        const date = "2020-12-05 13:53:23"
+        const newDate = wrapper.vm.formatDate(date)
+    })
 });
