@@ -107,6 +107,7 @@ describe('Posts', () => {
 
     it('shows date in correct format', function () {
         const date = "2020-12-05 13:53:23"
-        const newDate = wrapper.vm.formatDate(date)
+        const newDate = wrapper.vm.$options.filters.formatDate(date)
+        expect(newDate).toEqual("Saturday, December 5, 2020 1:53 PM")
     })
 });
