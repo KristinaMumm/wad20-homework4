@@ -37,7 +37,6 @@ router.post('/', authorize,  (request, response) => {
         code: null,
         message: 'Please provide %s field'
     };
-    response.json(fieldMissing, 400);
 
     for (let field in userPost) {
         if (userPost[field].required === true && !request.body[field]) {
