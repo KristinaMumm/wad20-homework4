@@ -54,8 +54,8 @@ router.post('/', authorize,  (request, response) => {
         userId: request.currentUser.id,
         text: request.body.text,
         media: {
-            url: request.body.url,
-            type: request.body.type
+            url: request.body.media.url,
+            type: request.body.media.type
         }
     };
 
