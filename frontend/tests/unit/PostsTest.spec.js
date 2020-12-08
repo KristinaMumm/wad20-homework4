@@ -105,6 +105,25 @@ describe('Posts', () => {
         expect(posts.length).toEqual(testData.length)
     });
 
+    it('renders media properties correctly', function () {
+        const displayedPosts = wrapper.findAll(".post")
+        for (let i = 0; i < displayedPosts.length; i++) {
+            let displayedPost = displayedPosts[i]
+            let post = testData[i]
+            if (post.media) {
+                if (post.media.type === 'image'){
+                    expect(displayedPost.find('img').exists).toBe(true)
+                }
+                else if (post.media.type === 'video'){
+                    expect(displayedPost.find('video').exists).toBe(true)
+                }
+            } else {
+                expect(displayedPost.find('img').exists).toBe(false)
+                expect(displayedPost.find('video').exists).toBe(false)
+            }
+        }
+    })
+
     it('shows date in correct format', function () {
         const date = "2020-12-05 13:53:23"
         const newDate = wrapper.vm.$options.filters.formatDate(date)
