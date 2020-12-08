@@ -108,18 +108,18 @@ describe('Posts', () => {
     it('renders media properties correctly', function () {
         const displayedPosts = wrapper.findAll(".post")
         for (let i = 0; i < displayedPosts.length; i++) {
-            let displayedPost = displayedPosts[i]
+            let displayedPost = displayedPosts.at(i)
             let post = testData[i]
             if (post.media) {
                 if (post.media.type === 'image'){
-                    expect(displayedPost.find('img').exists).toBe(true)
+                    expect(displayedPost.find('img').exists()).toBe(true)
                 }
                 else if (post.media.type === 'video'){
-                    expect(displayedPost.find('video').exists).toBe(true)
+                    expect(displayedPost.find('video').exists()).toBe(true)
                 }
             } else {
-                expect(displayedPost.find('img').exists).toBe(false)
-                expect(displayedPost.find('video').exists).toBe(false)
+                expect(displayedPost.find('img').exists()).toBe(false)
+                expect(displayedPost.find('video').exists()).toBe(false)
             }
         }
     })
