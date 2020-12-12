@@ -100,7 +100,7 @@ describe('Posts', () => {
 
     const wrapper = mount(Posts, {router, store, localVue});
 
-    it('renders the correct amount of posts', function () {
+    it('renders the correct number of posts', function () {
         const posts = wrapper.findAll(".post")
         expect(posts.length).toEqual(testData.length)
     });
@@ -112,14 +112,18 @@ describe('Posts', () => {
             let post = testData[i]
             if (post.media) {
                 if (post.media.type === 'image'){
-                    expect(displayedPost.find('img').exists()).toBe(true)
+                    //console.log(displayedPost.find('.post-image').find('img').exists());
+                    expect(displayedPost.find('.post-image').find('img').exists()).toBe(true)
                 }
                 else if (post.media.type === 'video'){
-                    expect(displayedPost.find('video').exists()).toBe(true)
+                    expect(displayedPost.find('.post-image').find('video').exists()).toBe(true)
                 }
             } else {
-                expect(displayedPost.find('img').exists()).toBe(false)
-                expect(displayedPost.find('video').exists()).toBe(false)
+                //console.log(post.media);
+                //console.log(post.id);
+                //console.log(displayedPost.find('.post-image').exists());
+                //console.log(displayedPost.find('img').attributes());
+                expect(displayedPost.find('.post-image').exists()).toBe(false)
             }
         }
     })
